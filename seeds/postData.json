@@ -1,0 +1,74 @@
+[
+  {
+  "id": 1,
+  "title": "Exploring the Wonders of Nature",
+  "content": "In this blog post, I'll share my adventures and discoveries while exploring the wonders of nature.",
+  "user_id": 1,
+  "created_on": "2022-01-01",
+  "comments": [],
+  "username": "Sal"
+},
+{
+  "id": 2,
+  "title": "Tips for Outdoor Photography",
+  "content": "Learn some valuable tips and techniques to capture stunning outdoor photographs in this blog post.",
+  "user_id": 1,
+  "created_on": "2022-02-01",
+  "comments": [],
+  "username": "Sal"
+},
+{
+  "id": 3,
+  "title": "Unveiling the Secrets of Ancient History",
+  "content": "Delve into the mysteries of ancient civilizations and unravel their intriguing secrets in this blog post.",
+  "user_id": 2,
+  "created_on": "2022-03-01",
+  "comments": [],
+  "username": "Lernantino"
+},
+{
+  "id": 4,
+  "title": "Mastering the Art of Cooking",
+  "content": "Embark on a culinary journey and learn how to master the art of cooking delicious and nutritious meals.",
+  "user_id": 3,
+  "created_on": "2022-04-01",
+  "comments": [],
+  "username": "Amiko"
+},
+{
+  "id": 5,
+  "title": "The Joy of Baking: Creating Sweet Delights",
+  "content": "Indulge your senses in the delightful world of baking as we explore the art of creating sweet treats.",
+  "user_id": 3,
+  "created_on": "2022-05-01",
+  "comments": [],
+  "username": "Amiko"
+},
+{
+  "id": 6,
+  "title": "Exploring the Marvels of Space",
+  "content": "Embark on an astronomical adventure as we explore the vastness of space and the wonders it holds.",
+  "user_id": 4,
+  "created_on": "2022-06-01",
+  "comments": [],
+  "username": "Jordan"
+},
+{
+  "id": 7,
+  "title": "A Journey into the World of Music",
+  "content": "Join me on a melodic journey as we explore the diverse genres and captivating stories behind music.",
+  "user_id": 5,
+  "created_on": "2022-07-01",
+  "comments": [],
+  "username": "Blake"
+},
+{
+  "id": 8,
+  "title": "The Art of Writing: Expressing Creativity",
+  "content": "Discover the power of words and learn how to express your creativity through the art of writing.",
+  "user_id": 5,
+  "created_on": "2022-08-01",
+  "comments": [],
+  "username": "Blake"
+}
+]

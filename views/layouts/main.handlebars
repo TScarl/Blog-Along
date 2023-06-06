@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Along</title>
-  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/public/css/jass.css">
 </head>
 
 <body>
@@ -18,12 +18,11 @@
         <li><a href="/">Home</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         {{#if logged_in}}
-        <li><a href="/login">Logout</a></li>
+        <li id = "logout-button"><a href="/">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
         {{/if}}
       </ul>
-      {{!-- <button class="btn" id="logout">Logout</button> --}}
     </nav>
   </header>
   <main class="container container-fluid mt-5">
@@ -34,7 +33,7 @@
   </footer>
 
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+<script src="/public/js/script.js"></script>
   {{/if}}
 </body>
 

@@ -1,0 +1,29 @@
+<h1>Welcome to the Dashboard</h1>
+
+{{#if users}}
+  {{#each users}}
+    <div class="post">
+      <h2>{{title}}</h2>
+      <p>{{content}}</p>
+      <p>Author: {{username}}</p>
+      <form action="/api/user/posts/{{id}}" method="POST">
+        <input type="text" name="title" placeholder="Enter a new title">
+        <textarea name="content" placeholder="Enter new content"></textarea>
+        <button type="submit">Update Post</button>
+      </form>
+      <form action="/api/user/posts/{{id}}?_method=DELETE" method="POST">
+        <button type="submit">Delete Post</button>
+      </form>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No posts found.</p>
+{{/if}}
+
+{{!-- Create a new post --}}
+<h2>Create a New Post</h2>
+<form action="/api/user/posts" method="POST">
+  <input type="text" name="title" placeholder="Enter a title">
+  <textarea name="content" placeholder="Enter content"></textarea>
+  <button type="submit">Create Post</button>
+</form>

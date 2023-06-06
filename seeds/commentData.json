@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "content": "Great post! I love exploring nature too.",
+      "created_on": "2022-01-05",
+      "post_id": 1,
+      "user_id": 2
+    },
+    {
+      "id": 2,
+      "content": "Thanks for sharing these photography tips. They're really helpful!",
+      "created_on": "2022-02-10",
+      "post_id": 2,
+      "user_id": 3
+    },
+    {
+      "id": 3,
+      "content": "Fascinating read! I've always been intrigued by ancient history.",
+      "created_on": "2022-03-15",
+      "post_id": 3,
+      "user_id": 1
+    },
+    {
+      "id": 4,
+      "content": "I can't wait to try out these cooking techniques. They sound delicious!",
+      "created_on": "2022-04-20",
+      "post_id": 4,
+      "user_id": 5
+    },
+    {
+      "id": 5,
+      "content": "Baking is my passion! Your post has inspired me to create more sweet treats.",
+      "created_on": "2022-05-25",
+      "post_id": 5,
+      "user_id": 4
+    },
+    {
+      "id": 6,
+      "content": "Space exploration is amazing. I can't wait to learn more about it.",
+      "created_on": "2022-06-30",
+      "post_id": 6,
+      "user_id": 2
+    },
+    {
+      "id": 7,
+      "content": "I'm a huge music lover. This post resonated with me. Thanks for sharing!",
+      "created_on": "2022-07-05",
+      "post_id": 7,
+      "user_id": 1
+    },
+    {
+      "id": 8,
+      "content": "Writing is such a powerful form of self-expression. I enjoyed reading your insights.",
+      "created_on": "2022-08-10",
+      "post_id": 8,
+      "user_id": 3
+    }
+  ]

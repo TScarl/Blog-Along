@@ -10,6 +10,7 @@ class User extends Model {
 
 User.init(
   {
+    // model attributes
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -18,7 +19,8 @@ User.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: null,
     },
     email: {
       type: DataTypes.STRING,
@@ -37,12 +39,6 @@ User.init(
     },
   },
   {
-    hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
@@ -50,5 +46,15 @@ User.init(
     modelName: 'user',
   }
 );
+
+User.addHook('beforeCreate', async (user) => {
+  user.password = await bcrypt.hash(user.password, 10);
+  return user;
+});
+
+User.addHook('beforeUpdate', async (user) => {
+  user.password = await bcrypt.hash(user.password, 10);
+  return user;
+});
 
 module.exports = User;
