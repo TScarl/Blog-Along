@@ -40,9 +40,24 @@ router.get('/signout', (req, res) => {
   });
 });
 
-// dashboard route
-router.get('/dashboard', withAuth, (req, res) => {
-  res.render('dashboard', { logged_in: req.session.logged_in });
+// dashboard route with all users posts
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: User }],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

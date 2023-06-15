@@ -1,12 +1,15 @@
 {{#each posts as |post| }}
 <div class="row align-center mb-5">
   <div class="col-md-6">
-    <h2>{{this.title}}</h2>
-    <p>{{this.content}}</p>
-    <p>{{this.username}}</p>
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <p>{{post.username}}</p>
+    {{#each post.comments as |comment| }}
+    <p>{{comment.content}}</p>
+    {{/each}}
   </div>
   <div class="col-md-6">
-        <h3>Date created on: {{this.created_at}}</h3>
+    <h3>Date created on: {{post.created_on}}</h3>
   </div>
 </div>
 {{/each}}

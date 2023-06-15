@@ -17,10 +17,14 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    created_at: {
+    created_on: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+    },
+    comments: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     username: {
       type: DataTypes.STRING,

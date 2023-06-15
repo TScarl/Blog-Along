@@ -1,5 +1,3 @@
-
-console.log('Script loaded');
 // js code waits for html to load before running
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -57,126 +55,129 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.querySelector('.signup-form');
 
   if (signupForm) {
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const email = document.querySelector('#email-signup').value;
-    const password = document.querySelector('#password-signup').value;
+      const email = document.querySelector('#email-signup').value;
+      const password = document.querySelector('#password-signup').value;
 
-    try {
-      const response = await fetch('/api/user/signup', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      try {
+        const response = await fetch('/api/user/signup', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
 
-      if (response.ok) {
-        // Signup successful, redirect to homepage or display a success message
-        window.location.href = '/';
-      } else {
-        // Signup failed, display an error message
-        const errorData = await response.json();
-        console.error(errorData.message);
+        if (response.ok) {
+          // Signup successful, redirect to homepage or display a success message
+          window.location.href = '/';
+        } else {
+          // Signup failed, display an error message
+          const errorData = await response.json();
+          console.error(errorData.message);
+        }
+      } catch (err) {
+        console.error('Error:', err);
       }
-    } catch (err) {
-      console.error('Error:', err);
-    }
-  });
-}
+    });
+
+    const container = document.getElementById('posts-container');
+
+    // Fetch the posts from the server
+    fetch('/api/user/posts')
+      .then(response => response.json())
+      .then(posts => {
+        // Iterate over the posts and create HTML elements to display them
+        posts.forEach(post => {
+          const postElement = document.createElement('div');
+          postElement.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.content}</p>
+            <p>Author: ${post.username}</p>
+          `;
+          container.appendChild(postElement);
+        });
+      })
+      .catch(error => console.error(error));
+  }
 });
 
-
-
-// // Sign up function
-// const signUpForm = async (event) => {
-//   event.preventDefault();
-
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-//   const emailSignUp = $("#signup-email").val();
-//   const passwordSignUp = $("#signup-password").val();
-
-//   // make sure that all fields are filled out correctly
-//   if (!emailRegex.test(emailSignUp)) {
-//     $("#signup-email-error")
-//       .text("Please enter a valid email address!")
-//       .addClass("text-red-700 italic text-sm");
-//   }
-
-//   if (passwordSignUp === "" || passwordSignUp < 6) {
-//     $("#password-error")
-//       .text("Please enter a password with at least 6 characters!")
-//       .addClass("text-red-700 italic text-sm");
-//   }
-
-//   // create an object to send to the database
-//   const userData = {
-//     email: emailSignUp,
-//     password: passwordSignUp,
-//   };
-
-//   // send the object to the database
-//   const response = await fetch("/api/signup", {
-//     method: "POST",
-//     body: JSON.stringify(userData),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
+// // create new post from dashboard
+// fetch('/api/dashboard/posts', {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({ title: 'New Post', content: 'Post content' })
+// })
+//   .then(response => response.json())
+//   .then(data => {
+//     // message comes from routes, the res.json line
+//     console.log(data.message);
+//   })
+//   .catch(error => {
+//     console.error(error);
 //   });
 
-//   if (response.ok) {
-//     console.log("account created");
-//     // Redirect to the homepage with a query parameter after successful signup
-//     window.location.replace("/?signupSuccess=true");
-//   } else {
-//     console.log("account not created");
-//   }
-// };
-
-// $("#sign-up-form").submit(signUpForm);
-
-// // Login function
-// const loginForm = async (event) => {
-//   event.preventDefault();
-
-//   const emailLogin = $("#login-email").val();
-//   const passwordLogin = $("#login-password").val();
-
-//   if (emailLogin === "") {
-//     $("#login-email-error")
-//       .text("Ooos, Please fill enter your email!")
-//       .addClass("text-red-700 italic text-sm");
-//   }
-
-//   if (passwordLogin === "") {
-//     $("#login-password-error")
-//       .text("Ooos, Please enter your password!")
-//       .addClass("text-red-700 italic text-sm");
-//   }
-
-//   // create an object to send to the database
-//   const loginData = {
-//     email: emailLogin,
-//     password: passwordLogin,
-//   };
-
-//   // send the object to the database
-//   const response = await fetch("/api/login", {
-//     method: "POST",
-//     body: JSON.stringify(loginData),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
+// // update a post from dashboard
+// fetch(`/api/dashboard/posts/${post_id}`, {
+//   method: 'PUT',
+//   headers: { 'content-type': 'application/json' },
+//   body: JSON.stringify({ title: 'Updated Post', content: 'Updated Content' })
+// })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data.message);
+//   })
+//   .catch(error => {
+//     console.log(error);
 //   });
 
-//   if (response.ok) {
-//     console.log("logged in");
-//     location.reload(); // Refresh the page
-//   } else {
-//     console.log("login error");
-//     // Redirect back to the login page with a query parameter after failing to login
-//     window.location.replace("/login?loginFailed=true");
-//   }
-// };
+// // delete a post from dashboard
+// fetch(`/api/dashboard/posts/${post_id}`, {
+//   method: 'DELETE',
+// })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data.message);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
 
-// $("#login-form").submit(loginForm);
+  fetch('/api/dashboard/posts')
+  .then(response => response.json())
+  .then(posts => {
+    // Iterate over the posts and create HTML elements to display them
+    posts.forEach(post => {
+      const postElement = document.createElement('div');
+      postElement.innerHTML = `
+        <h2>${post.title}</h2>
+        <p>${post.content}</p>
+        <p>Author: ${post.username}</p>
+        <button class="edit-post" data-post-id="${post.id}">Edit</button>
+        <button class="delete-post" data-post-id="${post.id}">Delete</button>
+      `;
+      container.appendChild(postElement);
+    });
+
+    // Attach event listeners to the edit and delete buttons
+    const editButtons = document.querySelectorAll('.edit-post');
+    editButtons.forEach(button => {
+      const postId = button.dataset.postId;
+      button.addEventListener('click', () => {
+        // Handle edit operation for the post with postId
+        // You can use the postId to make the corresponding fetch request
+        console.log(`Edit post with ID: ${postId}`);
+      });
+    });
+
+    const deleteButtons = document.querySelectorAll('.delete-post');
+    deleteButtons.forEach(button => {
+      const postId = button.dataset.postId;
+      button.addEventListener('click', () => {
+        // Handle delete operation for the post with postId
+        // You can use the postId to make the corresponding fetch request
+        console.log(`Delete post with ID: ${postId}`);
+      });
+    });
+  })
+  .catch(error => console.error(error));

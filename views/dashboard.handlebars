@@ -1,29 +1,30 @@
 <h1>Welcome to the Dashboard</h1>
-
-{{#if users}}
-  {{#each users}}
+<div id="posts-container">
+    {{#if posts}}
+    {{#each posts as |post| }}
     <div class="post">
-      <h2>{{title}}</h2>
-      <p>{{content}}</p>
-      <p>Author: {{username}}</p>
-      <form action="/api/user/posts/{{id}}" method="POST">
-        <input type="text" name="title" placeholder="Enter a new title">
-        <textarea name="content" placeholder="Enter new content"></textarea>
-        <button type="submit">Update Post</button>
-      </form>
-      <form action="/api/user/posts/{{id}}?_method=DELETE" method="POST">
-        <button type="submit">Delete Post</button>
-      </form>
+        <h2>{{post.title}}</h2>
+        <p>{{post.content}}</p>
+        <p>Author: {{post.username}}</p>
+        <form action="/api/dashboard/posts/{{post.id}}" method="POST">
+            <input type="text" name="title" placeholder="Enter a new title">
+            <textarea name="content" placeholder="Enter new content"></textarea>
+            <button type="submit">Update Post</button>
+        </form>
+        <form action="/api/dashboard/posts/{{post.id}}?_method=DELETE" method="POST">
+            <button type="submit">Delete Post</button>
+        </form>
     </div>
-  {{/each}}
-{{else}}
-  <p>No posts found.</p>
-{{/if}}
+    {{/each}}
+    {{else}}
+    <p>No posts found.</p>
+    {{/if}}
+</div>
 
 {{!-- Create a new post --}}
 <h2>Create a New Post</h2>
-<form action="/api/user/posts" method="POST">
-  <input type="text" name="title" placeholder="Enter a title">
-  <textarea name="content" placeholder="Enter content"></textarea>
-  <button type="submit">Create Post</button>
+<form action="/api/dashboard/posts" method="POST">
+    <input type="text" name="title" placeholder="Enter a title">
+    <textarea name="content" placeholder="Enter content"></textarea>
+    <button type="submit">Create Post</button>
 </form>
